@@ -16,7 +16,7 @@ python sk_generator.py
 python sk_generator.py 50
 ```
 
-### adapter le chemin de l'icône et du script python et exécuter la commande dans le terminal pour créer un fichier .exe
+### adapt the path of the icon and the python script and execute the command in the terminal to create an .exe file
 
 ```bash
 pyinstaller --noconfirm --onefile --icon "E:/develop/python/secretKeyGenerator/assets/icon.ico"  "E:/develop/python/secretKeyGenerator/sk_generator.py"
