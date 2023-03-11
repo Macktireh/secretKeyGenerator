@@ -4,7 +4,7 @@ import secrets
 
 
 RANDOM_STRING_CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*(-_=+)"
-DELETE_TABLE = str.maketrans('', '', '",;.|\\\'"')
+DELETE_LIST_STRING = ["'", "`", " ", '"', ';', ':', ',', '.', '?', '/', '\\', "\'", '\n', '\t', '\r', '\f', '\v']
 
 
 def get_random_secret_key(length=64, allowed_chars=RANDOM_STRING_CHARS) -> str:
@@ -20,7 +20,9 @@ def main() -> None:
 
         length: int = int(argv[0])
         allowed_chars: str = argv[1] if len(argv) > 1 else string.printable
-        allowed_chars = allowed_chars.translate(DELETE_TABLE).replace("'", "").replace('"', '').replace('\\', '').replace('/', '')
+
+        for char in DELETE_LIST_STRING:
+            allowed_chars = allowed_chars.replace(char, "")
 
         return print(get_random_secret_key(length, allowed_chars))
     except ValueError:
